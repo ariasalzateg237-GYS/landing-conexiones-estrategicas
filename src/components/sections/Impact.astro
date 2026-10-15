@@ -5,7 +5,7 @@ import { impactCards, impactHighlight } from '../../data/impact';
 const { data } = await getEntry('landing', '06-impact');
 const subheadlineLines = data.subheadline?.split('\n');
 ---
-<section id="impacto" class="gsap-section overflow-hidden bg-primary py-20 text-background md:py-32" data-section="impact">
+<section id="impacto" class="gsap-section overflow-hidden bg-primary py-14 text-background md:py-24" data-section="impact">
   <div class="section-shell">
     <div class="relative left-1/2 w-[calc(100vw-2rem)] max-w-[100rem] -translate-x-1/2 border-b border-background/20 pb-9 text-center md:w-[calc(100vw-5rem)]">
       <h2 class="display-title mx-auto max-w-[19ch] text-6xl text-background md:text-8xl lg:text-[6.75rem]">{data.headline}</h2>
@@ -45,7 +45,7 @@ const subheadlineLines = data.subheadline?.split('\n');
 
     <div class="mt-12 grid gap-8 bg-primary md:mt-16 lg:grid-cols-3 lg:gap-6">
       {impactCards.map((card) => (
-        <article class="impact-card relative flex flex-col items-center px-5 py-10 text-center md:px-7 md:py-12">
+        <article class="impact-card relative flex flex-col items-center px-5 py-6 text-center md:px-7 md:py-10">
           <div class="whitespace-nowrap font-heading text-[clamp(2.5rem,3.8vw,3.5rem)] font-bold leading-none tracking-[-0.035em] text-background">{card.value}</div>
           <div class="mt-1 min-h-5 font-heading text-xl font-semibold uppercase leading-none text-accent">{card.unit}</div>
           <div class="mt-5 max-w-[25ch] text-base leading-relaxed text-background/70 md:text-lg">{card.label}</div>

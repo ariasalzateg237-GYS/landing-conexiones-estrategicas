@@ -40,8 +40,10 @@ if (tokens.typography?.body_font) {
   lines.push(`  --font-body: ${tokens.typography.body_font};`);
 }
 
+// Prefijo --space-* a proposito: --spacing-<n> pisaria la escala de
+// Tailwind v4 (gap-8 pasaria a valer 96px en vez de 32px, inset-0 4px...).
 (tokens.spacing_px ?? []).forEach((v, i) => {
-  lines.push(`  --spacing-${i}: ${v}px;`);
+  lines.push(`  --space-${i}: ${v}px;`);
 });
 
 for (const [key, value] of Object.entries(tokens.radius_px ?? {})) {
