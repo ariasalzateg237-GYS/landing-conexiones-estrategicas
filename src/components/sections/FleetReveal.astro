@@ -1,9 +1,9 @@
 <section
-  class="fleet-reveal relative h-[155svh] bg-background md:h-[165svh]"
+  class="fleet-reveal relative h-dvh bg-background"
   data-section="fleet-reveal"
   aria-label="Flota de transporte de carga"
 >
-  <div class="fleet-reveal-sticky sticky top-[0px] h-dvh overflow-hidden bg-background">
+  <div class="fleet-reveal-sticky relative h-full overflow-hidden bg-background">
     <!-- Art direction, no solo reescalado: el banner apaisado cubierto con
          object-cover en un viewport vertical deja ver apenas un cuarto de
          su ancho, asi que debajo de md entra una toma vertical de la misma
@@ -28,7 +28,7 @@
       />
     </picture>
     <!-- Mismo velo simetrico del Hero: z-10 lo deja sobre la foto y debajo
-         de la cortina (z-20), que es la que se desliza al hacer scroll. -->
+         de la cortina (z-20), que se abre al llegar a mitad del viewport. -->
     <div
       aria-hidden="true"
       class="absolute inset-[0px] z-10 bg-[linear-gradient(to_bottom,rgba(0,0,0,.75)_0%,rgba(0,0,0,.42)_18%,rgba(0,0,0,.08)_38%,rgba(0,0,0,.08)_62%,rgba(0,0,0,.42)_82%,rgba(0,0,0,.75)_100%)]"

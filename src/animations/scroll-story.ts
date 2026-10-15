@@ -70,17 +70,13 @@ if (!reducedMotion) {
     const image = fleetReveal.querySelector<HTMLElement>('.fleet-reveal-image');
 
     if (curtain && image) {
+      // Time-based, not scrubbed: plays once when the section reaches mid-viewport.
       gsap
         .timeline({
-          scrollTrigger: {
-            trigger: fleetReveal,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.9,
-          },
+          scrollTrigger: { trigger: fleetReveal, start: 'top center', once: true },
         })
-        .to(curtain, { yPercent: -100, ease: 'none' }, 0)
-        .fromTo(image, { scale: 1.08 }, { scale: 1, ease: 'none' }, 0);
+        .to(curtain, { yPercent: -100, duration: 1.2, ease: 'power3.inOut' }, 0)
+        .fromTo(image, { scale: 1.08 }, { scale: 1, duration: 1.6, ease: 'power2.out' }, 0);
     }
   }
 
