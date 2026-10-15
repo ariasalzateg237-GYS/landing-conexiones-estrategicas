@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Preloader from '../components/layout/Preloader.astro';
 import Header from '../components/layout/Header.astro';
+import { contact } from '../data/contact';
 
 interface Props {
   title: string;
@@ -9,9 +10,66 @@ interface Props {
 }
 
 const { title, description = '' } = Astro.props;
+
+const siteName = 'G&S Conexiones Estratégicas';
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const ogImage = new URL('/og-image.jpg', Astro.site).href;
+const ogImageAlt = 'Flota de camiones de G&S Conexiones Estratégicas en ruta';
+
+// Datos estructurados: le dicen a Google y a los buscadores con LLM quien
+// es la empresa, que hace, donde opera y como contactarla.
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${Astro.site}#website`,
+      url: canonical,
+      name: siteName,
+      inLanguage: 'es-CO',
+      publisher: { '@id': `${Astro.site}#organization` },
+    },
+    {
+      '@type': ['Organization', 'LocalBusiness'],
+      '@id': `${Astro.site}#organization`,
+      name: siteName,
+      alternateName: ['G&S', 'Conexiones GS'],
+      url: canonical,
+      logo: new URL('/brand/logo-horizontal.png', Astro.site).href,
+      image: ogImage,
+      description,
+      slogan: 'Conectamos tu negocio, optimizamos tu camino',
+      telephone: contact.whatsappNumber.replace(/\s/g, ''),
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Antioquia',
+        addressCountry: 'CO',
+      },
+      areaServed: [
+        { '@type': 'AdministrativeArea', name: 'Valle de Aburrá' },
+        { '@type': 'AdministrativeArea', name: 'Oriente antioqueño' },
+        { '@type': 'Country', name: 'Colombia' },
+      ],
+      knowsAbout: ['Transporte de carga', 'Logística', 'Reciclaje de PET', 'Economía circular'],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: contact.whatsappNumber.replace(/\s/g, ''),
+        contactType: 'customer service',
+        areaServed: 'CO',
+        availableLanguage: 'Spanish',
+        url: contact.whatsappHref,
+      },
+      makesOffer: [
+        'Transporte de carga industrial',
+        'Logística para la cadena de reciclaje',
+        'Cobertura flexible a nivel nacional',
+      ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+    },
+  ],
+};
 ---
 <!doctype html>
-<html lang="es">
+<html lang="es-CO">
 <head>
   <script>
     // Evita que el navegador restaure el scroll al recargar: cada carga
@@ -37,19 +95,27 @@ const { title, description = '' } = Astro.props;
   <meta name="theme-color" content="#002A41" />
   <title>{title}</title>
   {description && <meta name="description" content={description} />}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <link rel="canonical" href={canonical} />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <link rel="alternate" type="text/plain" title="Resumen para LLMs" href="/llms.txt" />
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
   <meta property="og:title" content={title} />
   {description && <meta property="og:description" content={description} />}
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/brand/logo-horizontal.png" />
-  <meta property="og:image:type" content="image/png" />
-  <meta property="og:image:width" content="878" />
-  <meta property="og:image:height" content="428" />
-  <meta property="og:image:alt" content="Logo de G&S Conexiones Estratégicas" />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content={ogImageAlt} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   {description && <meta name="twitter:description" content={description} />}
-  <meta name="twitter:image" content="/brand/logo-horizontal.png" />
-  <meta name="twitter:image:alt" content="Logo de G&S Conexiones Estratégicas" />
+  <meta name="twitter:image" content={ogImage} />
+  <meta name="twitter:image:alt" content={ogImageAlt} />
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   <!-- Astro View Transitions (ViewTransitions/ClientRouter) se omite a
        proposito: aporta valor entre paginas distintas, y G&S es un
        one-pager puro (un solo index.astro). -->

@@ -1,0 +1,45 @@
+# robots.txt — https://www.conexionesgs.com
+#
+# Sitio público de una sola página: todo es indexable. Los rastreadores de
+# IA se listan de forma explícita (y permitida) para que asistentes y
+# buscadores basados en LLM puedan citar y recomendar a G&S. Resumen del
+# sitio para modelos de lenguaje: https://www.conexionesgs.com/llms.txt
+
+User-agent: *
+Allow: /
+
+# OpenAI (ChatGPT, búsqueda de ChatGPT, entrenamiento)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+Allow: /
+
+# Anthropic (Claude)
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Google (Gemini / AI Overviews) y Apple Intelligence
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+# Microsoft Copilot, Meta AI, Mistral, DuckDuckGo Assist, You.com
+User-agent: Bingbot
+User-agent: Meta-ExternalAgent
+User-agent: MistralAI-User
+User-agent: DuckAssistBot
+User-agent: YouBot
+Allow: /
+
+# Common Crawl (base de datos que alimenta a muchos modelos)
+User-agent: CCBot
+Allow: /
+
+Sitemap: https://www.conexionesgs.com/sitemap.xml

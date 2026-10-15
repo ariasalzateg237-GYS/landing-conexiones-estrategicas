@@ -8,7 +8,7 @@
 ## Cliente
 
 **G&S Conexiones Estratégicas** — empresa familiar de transporte de
-mercancía, fundada hace más de 20 años por Gentil y Santiago (padre e
+mercancía, con más de 37 años de experiencia logística, fundada por Gentil y Santiago (padre e
 hijo). Base de operaciones en Antioquia (área metropolitana y oriente);
 cobertura nacional bajo requerimiento. Cliente principal actual: ~2500
 toneladas/mes de botellas PET transportadas (cadena de reciclaje).
@@ -33,7 +33,7 @@ una tonelada que no termina en un relleno sanitario.
 
 Sólido, cercano, técnico, confiable, comprometido.
 
-Ejemplo de titular: *"20 años moviendo lo que la industria no puede
+Ejemplo de titular: *"37 años moviendo lo que la industria no puede
 detener."*
 
 ## Mapa del sitio
