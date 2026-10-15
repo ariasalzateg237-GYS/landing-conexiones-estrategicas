@@ -9,13 +9,13 @@ export const milestones: Milestone[] = [
     year: '1989',
     title: 'El primer movimiento',
     description:
-      'Desde el vehículo, la ruta y la operación diaria se construyó un conocimiento que no se aprende únicamente en la academia: son 37 años entendiendo los tiempos, necesidades del cliente, las condiciones del camino y la responsabilidad que existe detrás de cada entrega.',
+      'Desde el vehículo, la ruta y la operación diaria, Gentil construyó un conocimiento que no se aprende únicamente en la academia: son 37 años entendiendo los tiempos, necesidades del cliente, las condiciones del camino y la responsabilidad que existe detrás de cada entrega.',
   },
   {
    year: '2006',
    title: 'Una segunda generación acompaña el camino',
    description:
-     'Desde los 16 años, Santiago comenzó a conducir camión, entendio la operación desde adentro con cada una de sus variables. Al mismo tiempo, su formación como Ingeniero en Productividad y Calidad, complementada con una Especialización en Creatividad Estratégica, abrió una nueva perspectiva atravez del conocimiento técnico.',
+     'Desde los 16 años, Santiago comenzó a conducir camión, entendio la operación desde adentro con cada una de sus variables. Al mismo tiempo, su formación como Ingeniero en Productividad y Calidad, complementada con una Especialización en Creatividad Estratégica, abrió una nueva perspectiva a través del conocimiento técnico.',
  },
  {
    year: '2012',
