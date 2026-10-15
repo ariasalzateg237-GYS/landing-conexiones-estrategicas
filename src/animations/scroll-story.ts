@@ -140,7 +140,6 @@ if (!reducedMotion) {
 
   const process = document.querySelector<HTMLElement>('[data-section="how-it-works"]');
   if (process) {
-    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
     gsap
       .timeline({ scrollTrigger: { trigger: process.querySelector('ol'), start: 'top 75%', once: true } })
       .from(process.querySelectorAll('.process-step'), {
@@ -152,7 +151,7 @@ if (!reducedMotion) {
       })
       .from(
         process.querySelectorAll('.process-connector'),
-        { [isDesktop ? 'scaleX' : 'scaleY']: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out' },
+        { scaleX: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out' },
         0.3
       );
   }

@@ -12,9 +12,9 @@ const { data } = await getEntry('landing', '07-how-it-works');
       {data.subheadline && <p class="mx-auto mt-4 max-w-[60ch] text-[clamp(0.95rem,1.55vw,1.25rem)] leading-relaxed text-primary/85">{data.subheadline}</p>}
     </div>
 
-    <!-- Mobile: numbers in a left rail; the vertical line lives in the
-         rail's flow, so it stretches with the step's text and always stops
-         before the next number. Desktop: four columns with the numbers
+    <!-- Mobile: numbers in a left rail, no connector (the line only filled
+         the leftover height beside short copy and read as stray dashes).
+         Desktop: four columns with the numbers
          joined horizontally. That connector spans from this number's edge
          to the next column's, so the columns must stay gapless for the
          calc() offsets to hold. -->
@@ -25,9 +25,6 @@ const { data } = await getEntry('landing', '07-how-it-works');
             <span class="process-number block text-center font-heading text-6xl font-bold leading-none lg:text-7xl">
               {String(index + 1).padStart(2, '0')}
             </span>
-            {index < steps.length - 1 && (
-              <span aria-hidden="true" class="process-connector my-4 w-px flex-1 origin-top bg-primary/40 lg:hidden"></span>
-            )}
           </div>
           {index < steps.length - 1 && (
             <span
