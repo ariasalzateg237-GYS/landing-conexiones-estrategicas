@@ -140,25 +140,20 @@ if (!reducedMotion) {
 
   const process = document.querySelector<HTMLElement>('[data-section="how-it-works"]');
   if (process) {
-    const routeLayout = process.querySelector<HTMLElement>(
-      window.matchMedia('(min-width: 1024px)').matches ? '.route-layout-desktop' : '.route-layout-mobile'
-    );
-    const routeTimeline = gsap.timeline({
-      scrollTrigger: { trigger: process, start: 'top 62%', once: true },
-    });
-
-    routeLayout?.querySelectorAll<SVGPathElement>('.route-shoulder, .route-road').forEach((path) => {
-      const length = path.getTotalLength();
-      gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
-      routeTimeline.to(path, { strokeDashoffset: 0, duration: 2.6, ease: 'power2.inOut' }, 0);
-    });
-
-    routeTimeline
-      .from(routeLayout?.querySelectorAll('.route-centerline') ?? [], { opacity: 0, duration: 0.7 }, 1.9)
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    gsap
+      .timeline({ scrollTrigger: { trigger: process.querySelector('ol'), start: 'top 75%', once: true } })
+      .from(process.querySelectorAll('.process-step'), {
+        yPercent: 18,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.15,
+        ease: 'power3.out',
+      })
       .from(
-        routeLayout?.querySelectorAll('.process-step') ?? [],
-        { scale: 0.9, opacity: 0, duration: 0.8, stagger: 0.28, ease: 'back.out(1.25)' },
-        2.6
+        process.querySelectorAll('.process-connector'),
+        { [isDesktop ? 'scaleX' : 'scaleY']: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out' },
+        0.3
       );
   }
 

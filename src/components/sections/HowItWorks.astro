@@ -2,19 +2,48 @@
 import { getEntry } from 'astro:content';
 import { contact } from '../../data/contact';
 import { steps } from '../../data/steps';
-import RouteMap from './RouteMap.astro';
 
 const { data } = await getEntry('landing', '07-how-it-works');
 ---
 <section class="gsap-section bg-accent py-20 text-primary md:py-32" data-section="how-it-works">
   <div class="section-shell">
-    <div class="border-b border-primary/25 pb-8 text-center lg:pb-6">
-      <h2 class="display-title mx-auto max-w-[9ch] text-6xl md:text-8xl lg:max-w-none lg:whitespace-nowrap">{data.headline}</h2>
+    <div class="border-b border-primary/25 pb-5 text-center">
+      <h2 class="display-title text-6xl md:text-8xl">{data.headline}</h2>
+      {data.subheadline && <p class="mx-auto mt-4 max-w-[60ch] text-[clamp(0.95rem,1.55vw,1.25rem)] leading-relaxed text-primary/85">{data.subheadline}</p>}
     </div>
 
-    <RouteMap steps={steps} />
+    <!-- Mobile: numbers in a left rail; the vertical line lives in the
+         rail's flow, so it stretches with the step's text and always stops
+         before the next number. Desktop: four columns with the numbers
+         joined horizontally. That connector spans from this number's edge
+         to the next column's, so the columns must stay gapless for the
+         calc() offsets to hold. -->
+    <ol class="mt-14 grid lg:mt-20 lg:grid-cols-4" aria-label="Ruta del servicio en cuatro etapas">
+      {steps.map((step, index) => (
+        <li class="process-step relative grid grid-cols-[4.5rem_1fr] gap-x-5 pb-10 last:pb-0 lg:block lg:px-6 lg:pb-0 lg:text-center">
+          <div class="flex flex-col items-center lg:block">
+            <span class="process-number block text-center font-heading text-6xl font-bold leading-none lg:text-7xl">
+              {String(index + 1).padStart(2, '0')}
+            </span>
+            {index < steps.length - 1 && (
+              <span aria-hidden="true" class="process-connector my-4 w-px flex-1 origin-top bg-primary/40 lg:hidden"></span>
+            )}
+          </div>
+          {index < steps.length - 1 && (
+            <span
+              aria-hidden="true"
+              class="process-connector absolute left-[calc(50%+3rem)] right-[calc(-50%+3rem)] top-[2.25rem] hidden h-px origin-left bg-primary/40 lg:block"
+            ></span>
+          )}
+          <div class="lg:mt-12">
+            <h3 class="font-heading text-2xl font-semibold uppercase leading-[0.92] xl:text-3xl">{step.title}</h3>
+            <p class="mt-3 text-base leading-relaxed text-primary/85 lg:mx-auto lg:mt-4 lg:max-w-[24ch]">{step.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-14 flex justify-center lg:mt-20">
       <a
         href={contact.whatsappHref}
         target="_blank"
