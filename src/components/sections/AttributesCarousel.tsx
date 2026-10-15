@@ -68,7 +68,7 @@ export function AttributesCarousel({ attributes, headline }: { attributes: Attri
               >
                 <span
                   className={cn(
-                    'flex h-[20rem] items-center justify-center overflow-hidden rounded-xl border px-7 py-10 transition-[background-color,border-color,color,box-shadow] duration-500 sm:h-[22rem] sm:px-10 md:h-[24rem] md:px-12',
+                    'flex min-h-[18rem] items-center justify-center overflow-hidden rounded-xl border px-5 py-6 transition-[background-color,border-color,color,box-shadow] duration-500 sm:h-[22rem] sm:px-10 sm:py-10 md:h-[24rem] md:px-12',
                     isActive
                       ? 'border-primary bg-primary shadow-xl'
                       : 'border-primary/20 bg-background-alt text-primary group-hover:border-primary/40'
@@ -77,7 +77,7 @@ export function AttributesCarousel({ attributes, headline }: { attributes: Attri
                   <span className="block w-full max-w-lg">
                     <span
                       className={cn(
-                        'block font-heading text-3xl font-semibold uppercase leading-[0.92] transition-colors duration-500 md:text-4xl',
+                        'block font-heading text-2xl font-semibold uppercase leading-[0.92] transition-colors duration-500 sm:text-3xl md:text-4xl',
                         isActive ? 'text-accent' : 'text-primary'
                       )}
                     >
@@ -92,7 +92,7 @@ export function AttributesCarousel({ attributes, headline }: { attributes: Attri
                       )}
                     >
                       <span className="overflow-hidden">
-                        <span className="mt-5 block text-base leading-relaxed text-primary-foreground md:text-lg">
+                        <span className="mt-3 block text-sm leading-normal text-primary-foreground sm:mt-5 sm:text-base sm:leading-relaxed md:text-lg">
                           {attr.description}
                         </span>
                       </span>
