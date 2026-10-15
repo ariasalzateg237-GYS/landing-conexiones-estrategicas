@@ -10,6 +10,16 @@ html {
   scroll-padding-top: 5.5rem;
   overflow-x: clip;
   background: var(--color-primary);
+  /* Sin rebote elástico: en macOS/iOS el overscroll desplazaba toda la
+     página (incluidos los elementos fixed) y dejaba ver este fondo. */
+  overscroll-behavior: none;
+  /* Reserva el canal del scrollbar para que bloquearlo en .is-loading
+     no haga saltar el layout en sistemas con scrollbar clásica. */
+  scrollbar-gutter: stable;
+}
+
+html.is-loading {
+  overflow: hidden;
 }
 
 body {

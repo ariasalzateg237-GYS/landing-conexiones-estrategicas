@@ -26,11 +26,18 @@ if (!preloader || prefersReducedMotion) {
   // no lo toca; el ocultamiento inicial vive acá.
   gsap.set(heroItems, { opacity: 0, y: 24 });
 
+  // Bloquea el scroll mientras el loader tapa la página: si no, la cortina
+  // sale a mitad de página y la entrada del hero ocurre fuera de pantalla.
+  // Se activa desde acá (no desde un script en <head>) para que, si este
+  // módulo no llega a cargar, la página nunca quede bloqueada.
+  document.documentElement.classList.add('is-loading');
+
   const TOTAL_DURATION = 3;
   const EXIT_DURATION = 0.9;
   const HOLD_DURATION = TOTAL_DURATION - EXIT_DURATION;
 
   const finish = () => {
+    document.documentElement.classList.remove('is-loading');
     preloader.classList.add('is-leaving');
     setTimeout(revealHero, 500);
   };
